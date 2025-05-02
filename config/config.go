@@ -18,7 +18,7 @@ func LoadConfig() *Config {
 	// Default configuration
 	config := &Config{
 		KafkaBrokers:     []string{"103.20.212.44:9092"},
-		SourceTopics:     []string{"socket_508_jsonData"},
+		SourceTopics:     []string{"socket_508_jsonData", "socket700json"},
 		DestinationTopic: "live_tracking",
 		ConsumerGroupID:  "live-tracking-consumer",
 	}

@@ -8,16 +8,23 @@ import (
 	"sync"
 	"syscall"
 
+	"github.com/joho/godotenv" // Add this import
 	"github.com/malav4all/live-tracking-consumer/config"
 	"github.com/malav4all/live-tracking-consumer/internal/consumer"
 	"github.com/malav4all/live-tracking-consumer/internal/kafka"
 )
 
 func main() {
+	// Load .env file
+	if err := godotenv.Load(); err != nil {
+		log.Printf("Warning: No .env file found or unable to load: %v", err)
+		// Continue execution, as we have defaults defined in config
+	}
+
 	// Load configuration
 	cfg := config.LoadConfig()
 
-	// Log configuration
+	// Rest of your code remains the same
 	log.Printf("Kafka Brokers: %v", cfg.KafkaBrokers)
 	log.Printf("Source Topics: %v", cfg.SourceTopics)
 	log.Printf("Destination Topic: %s", cfg.DestinationTopic)
